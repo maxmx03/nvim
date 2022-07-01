@@ -13,8 +13,8 @@ set_autocmd({ 'InsertLeave', 'TextChanged' }, {
   end,
 })
 
-set_autocmd({'UIEnter'}, {
-  callback = function ()
+set_autocmd({ 'UIEnter' }, {
+  callback = function()
     vim.cmd 'Neotree show'
-  end
+  end,
 })

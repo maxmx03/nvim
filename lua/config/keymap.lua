@@ -6,6 +6,9 @@ keymap('n', '<space>q', 'quit')
 -- QUIT NEOVIM
 keymap('n', '<F3>', 'quitall')
 
+-- OPEN DASHBOARD
+keymap('n', '<F2>', 'Dashboard')
+
 -- NEO-TREE
 keymap('n', '<space>e', 'Neotree filesystem toggle')
 
