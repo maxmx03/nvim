@@ -26,6 +26,7 @@ packer.startup {
       'SmiteshP/nvim-gps',
       'phaazon/hop.nvim',
       'glepnir/dashboard-nvim',
+      'j-hui/fidget.nvim',
       {
         'nvim-neo-tree/neo-tree.nvim',
         branch = 'v2.x',

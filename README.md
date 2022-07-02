@@ -2,7 +2,7 @@
 
 Simple, easy to use and understand.
 
-# Prerequisits
+# Prerequisites
 
 - Neovim nightly
 

@@ -21,6 +21,7 @@ local success = pcall(function()
   require 'core.comment'
   require 'core.hop'
   require 'core.dashboard'
+  require 'core.fidget'
   require 'core.winbar'
 end)
 
