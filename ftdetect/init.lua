@@ -1,5 +1,6 @@
 local success = pcall(function()
   require 'core.impatient'
+  require 'core.onedarkpro'
   require 'core.null-ls'
   require 'core.cmp'
   require 'core.lsp-signature'
@@ -23,23 +24,6 @@ local success = pcall(function()
   require 'core.winbar'
 end)
 
-if success then
-  local onedarkpro, colors = require('utils').get_theme()
-
-  onedarkpro.setup {
-    options = {
-      transparency = user.transparency,
-    },
-    hlgroups = {
-      NeoTreeDirectoryName = { fg = colors.fg },
-      NeoTreeDirectoryIcon = { fg = colors.blue },
-      NeoTreeRootName = {
-        fg = colors.blue,
-      },
-    },
-  }
-  onedarkpro.load()
-  vim.cmd(string.format('colorscheme %s', user.colorscheme))
-else
+if not success then
   vim.cmd 'colorscheme slate'
 end
