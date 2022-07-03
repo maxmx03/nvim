@@ -2,6 +2,13 @@
 
 Simple, easy to use and understand.
 
+<div>
+  <img src="https://github.com/maxmx03/milianor-dotfiles/blob/main/docs/nvim.png" />
+  <img src="https://github.com/maxmx03/milianor-dotfiles/blob/main/docs/nvim-2.png" />
+  <img src="https://github.com/maxmx03/milianor-dotfiles/blob/main/docs/nvim-3.png" />
+</div>
+
+
 # Prerequisites
 
 - [Neovim nightly](https://github.com/neovim/neovim/releases)
