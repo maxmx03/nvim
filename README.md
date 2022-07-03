@@ -4,7 +4,8 @@ Simple, easy to use and understand.
 
 # Prerequisites
 
-- Neovim nightly
+- [Neovim nightly](https://github.com/neovim/neovim/releases)
+- [Nerd Fonts](https://www.nerdfonts.com/font-downloads)
 
 # Installation
 
