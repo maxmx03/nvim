@@ -1,4 +1,5 @@
 local neotree = require 'neo-tree'
+local set_autocmd = require('utils').set_autocmd
 
 neotree.setup {
   event_handlers = {
@@ -36,3 +37,9 @@ neotree.setup {
     },
   },
 }
+
+set_autocmd({ 'UIEnter' }, {
+  callback = function()
+    vim.cmd 'Neotree show'
+  end,
+})

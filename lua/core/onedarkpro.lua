@@ -3,6 +3,7 @@ local onedarkpro, colors = require('utils').get_theme()
 onedarkpro.setup {
   options = {
     transparency = user.transparency,
+    italic = true,
   },
   hlgroups = {
     NeoTreeDirectoryName = { fg = colors.fg },
