@@ -21,12 +21,15 @@ packer.startup {
       'lewis6991/impatient.nvim',
       'folke/lua-dev.nvim',
       'sindrets/diffview.nvim',
-      'nvim-telescope/telescope.nvim',
       'numToStr/Comment.nvim',
       'SmiteshP/nvim-gps',
       'phaazon/hop.nvim',
       'glepnir/dashboard-nvim',
       'j-hui/fidget.nvim',
+      {
+        'nvim-telescope/telescope.nvim',
+        requires = 'nvim-lua/plenary.nvim',
+      },
       {
         'nvim-neo-tree/neo-tree.nvim',
         branch = 'v2.x',
