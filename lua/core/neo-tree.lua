@@ -37,9 +37,3 @@ neotree.setup {
     },
   },
 }
-
-set_autocmd({ 'UIEnter' }, {
-  callback = function()
-    vim.cmd 'Neotree show'
-  end,
-})

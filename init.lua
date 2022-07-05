@@ -33,6 +33,7 @@ user.langs = {
   'svelte',
   'tsx',
   'typescript',
+  'toml',
   'vim',
   'vue',
   'yaml',
