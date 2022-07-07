@@ -10,7 +10,7 @@ keymap('n', '<F3>', 'quitall')
 keymap('n', '<F2>', 'Dashboard')
 
 -- NEO-TREE
-keymap('n', '<space>e', 'Neotree filesystem toggle')
+keymap('n', '<space>e', 'NvimTreeToggle')
 
 -- TELESCOPE
 keymap('n', '<space>ff', 'Telescope find_files')

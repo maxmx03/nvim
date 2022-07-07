@@ -9,7 +9,7 @@ local success = pcall(function()
   require 'core.lsp'
   require 'core.web-devicons'
   require 'core.treesitter'
-  require 'core.neo-tree'
+  require 'core.nvim-tree'
   require 'core.telescope'
   require 'core.lualine'
   require 'core.tabline'

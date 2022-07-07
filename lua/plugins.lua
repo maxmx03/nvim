@@ -31,10 +31,9 @@ packer.startup {
         requires = 'nvim-lua/plenary.nvim',
       },
       {
-        'nvim-neo-tree/neo-tree.nvim',
-        branch = 'v2.x',
+        'kyazdani42/nvim-tree.lua',
         requires = {
-          'MunifTanjim/nui.nvim',
+          'kyazdani42/nvim-web-devicons',
         },
       },
       {
