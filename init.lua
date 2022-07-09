@@ -24,7 +24,6 @@ user.langs = {
   'json',
   'kotlin',
   'lua',
-  'markdown',
   'php',
   'prisma',
   'python',
@@ -51,4 +50,10 @@ user.servers = {
   'emmet_ls',
   'tailwindcss',
   'svelte',
+}
+user.completions = {
+  'spell',
+}
+user.code_actions = {
+  'eslint',
 }
