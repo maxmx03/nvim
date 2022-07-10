@@ -104,9 +104,29 @@ require('lualine').setup {
       },
     },
     lualine_c = {},
-    lualine_x = {},
-    lualine_y = { search_result, 'filetype' },
-    lualine_z = { '%l:%c', '%p%%/%L' },
+    lualine_x = { search_result, 'filetype' },
+    lualine_y = {
+      {
+        -- Lsp server name .
+        function()
+          local msg = 'No Active Lsp'
+          local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
+          local clients = vim.lsp.get_active_clients()
+          if next(clients) == nil then
+            return msg
+          end
+          for _, client in ipairs(clients) do
+            local filetypes = client.config.filetypes
+            if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 and client.name ~= 'null-ls' then
+              return client.name
+            end
+          end
+          return msg
+        end,
+        color = { fg = colors.fg, bg = colors.gray },
+      },
+    },
+    lualine_z = { '%p%%/%L' },
   },
   inactive_sections = {
     lualine_c = { '%f %y %m' },
