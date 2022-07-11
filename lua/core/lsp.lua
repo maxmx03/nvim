@@ -1,5 +1,4 @@
 local lsp = require 'lspconfig'
-local keymap = require('utils').keymap
 
 vim.diagnostic.config {
   virtual_text = {
@@ -10,7 +9,9 @@ vim.diagnostic.config {
 local on_attach = function(_, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-  keymap('n', '<space>l', 'lua vim.lsp.buf.format()')
+  local bufopts = { noremap=true, silent=true, buffer=bufnr }
+
+  vim.keymap.set('n', '<space>l', vim.lsp.buf.format, bufopts)
 end
 
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
