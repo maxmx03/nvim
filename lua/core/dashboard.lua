@@ -21,7 +21,7 @@ dashboard.custom_center = {
   {
     icon = '  ',
     desc = 'File Browser                            ',
-    action = 'Neotree filesystem toggle',
+    action = 'NvimTreeToggle',
     shortcut = 'SPC e  ',
   },
   {
