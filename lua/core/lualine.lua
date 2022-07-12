@@ -1,4 +1,5 @@
-local _, colors = require('utils').get_theme()
+local onedarkpro = require 'onedarkpro'
+local colors = onedarkpro.get_colors(vim.g.onedarkpro_style)
 
 local theme = {
   normal = {

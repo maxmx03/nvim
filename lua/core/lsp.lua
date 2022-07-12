@@ -1,15 +1,9 @@
 local lsp = require 'lspconfig'
 
-vim.diagnostic.config {
-  virtual_text = {
-    prefix = '',
-  },
-}
-
 local on_attach = function(_, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-  local bufopts = { noremap=true, silent=true, buffer=bufnr }
+  local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
   vim.keymap.set('n', '<space>l', vim.lsp.buf.format, bufopts)
 end
@@ -47,3 +41,14 @@ for _, server in pairs(user.servers) do
 
   lsp[server].setup(config)
 end
+
+vim.fn.sign_define('DiagnosticSignError', { text = '', texthl = 'DiagnosticSignError' })
+vim.fn.sign_define('DiagnosticSignWarn', { text = '', texthl = 'DiagnosticSignWarn' })
+vim.fn.sign_define('DiagnosticSignInfo', { text = '', texthl = 'DiagnosticSignInfo' })
+vim.fn.sign_define('DiagnosticSignHint', { text = '', texthl = 'DiagnosticSignHint' })
+
+vim.diagnostic.config {
+  virtual_text = {
+    prefix = '',
+  },
+}

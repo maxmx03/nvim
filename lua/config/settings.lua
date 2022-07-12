@@ -17,7 +17,7 @@ vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
 vim.opt.undofile = true
 vim.opt.undodir = vim.fn.stdpath 'cache' .. '/undo'
 vim.opt.clipboard = 'unnamedplus'
-vim.opt.whichwrap:append("<,>,[,],h,l")
+vim.opt.whichwrap:append '<,>,[,],h,l'
 vim.o.termguicolors = true
 vim.g.python3_host_prog = '/usr/bin/python3.10'
 

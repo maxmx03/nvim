@@ -9,4 +9,3 @@ user.code_actions = nil
 user.hovers = nil
 user.langs = {}
 user.servers = {}
-

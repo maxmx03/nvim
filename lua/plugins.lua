@@ -12,7 +12,6 @@ packer.startup {
       'wbthomason/packer.nvim',
       'neovim/nvim-lspconfig',
       'williamboman/nvim-lsp-installer',
-      'tami5/lspsaga.nvim',
       'ray-x/lsp_signature.nvim',
       'windwp/nvim-ts-autotag',
       'windwp/nvim-autopairs',
@@ -22,10 +21,14 @@ packer.startup {
       'folke/lua-dev.nvim',
       'sindrets/diffview.nvim',
       'numToStr/Comment.nvim',
-      'SmiteshP/nvim-gps',
       'phaazon/hop.nvim',
       'glepnir/dashboard-nvim',
       'j-hui/fidget.nvim',
+      'SmiteshP/nvim-gps',
+      {
+        'glepnir/lspsaga.nvim',
+        requires = 'neovim/nvim-lspconfig',
+      },
       {
         'nvim-telescope/telescope.nvim',
         requires = 'nvim-lua/plenary.nvim',
