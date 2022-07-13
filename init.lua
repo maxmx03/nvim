@@ -57,3 +57,4 @@ user.completions = {
 user.code_actions = {
   'eslint',
 }
+
