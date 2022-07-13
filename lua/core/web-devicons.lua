@@ -9,11 +9,12 @@ local function icon_config(icon, color, name)
 end
 
 -- custom icons
-local git_icon, git_color = '', '#C84b31'
+local git_icon = ''
 local test_icon = ''
 local angular_icon = ''
 
 -- custom colors
+local git_color = '#C84b31'
 local ruby_color = '#FC4F4F'
 local gem_color = '#FA4EAB'
 local rubocop_color = '#C0C0C0'
@@ -53,7 +54,7 @@ devicons.set_icon {
   ['component.ts'] = icon_config(angular_icon, ts_color, 'typescript'),
   ['component.css'] = icon_config(angular_icon, css_color, 'css'),
   ['module.ts'] = icon_config(angular_icon, ts_color, 'typescript'),
-  ['service.ts'] = icon_config(angular_icon, ts_color, 'javascript'),
+  ['service.ts'] = icon_config(angular_icon, ts_color, 'typescript'),
 }
 
 devicons.setup()
