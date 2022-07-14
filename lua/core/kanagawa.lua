@@ -25,9 +25,7 @@ kanagawa.setup {
   overrides = {
     NeoTreeDirectoryName = { fg = default_colors.fujiWhite },
     NeoTreeDirectoryIcon = { fg = default_colors.oniViolet },
-    NeoTreeRootName = {
-      fg = colors.blue,
-    },
+    NeoTreeRootName = { fg = default_colors.oniViolet },
     NvimTreeFolderName = { fg = default_colors.fujiWhite },
     NvimTreeFolderIcon = { fg = default_colors.oniViolet },
     NvimTreeRootFolder = { fg = default_colors.oniViolet },
