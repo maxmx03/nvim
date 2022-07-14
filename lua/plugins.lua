@@ -9,6 +9,7 @@ packer.startup {
   function(use)
     use {
       'olimorris/onedarkpro.nvim',
+      'rebelot/kanagawa.nvim',
       'wbthomason/packer.nvim',
       'neovim/nvim-lspconfig',
       'williamboman/nvim-lsp-installer',

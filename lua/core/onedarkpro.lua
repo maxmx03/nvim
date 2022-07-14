@@ -19,6 +19,4 @@ onedarkpro.setup {
   },
 }
 
-onedarkpro.load()
-
-vim.cmd(string.format('colorscheme %s', user.colorscheme))
+return colors

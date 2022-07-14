@@ -1,6 +1,7 @@
 require 'config.init'
 require 'plugins'
 
+user.colorscheme = 'kanagawa' -- onedarkpro, kanagawa
 user.formattings = {
   'prettier',
   'stylua',
@@ -52,9 +53,8 @@ user.servers = {
   'svelte',
 }
 user.completions = {
-  'spell',
+  -- 'spell',
 }
 user.code_actions = {
   'eslint',
 }
-

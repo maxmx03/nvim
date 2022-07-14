@@ -1,6 +1,5 @@
 local success = pcall(function()
   require 'core.impatient'
-  require 'core.onedarkpro'
   require 'core.null-ls'
   require 'core.cmp'
   require 'core.lsp-signature'
@@ -27,4 +26,6 @@ end)
 
 if not success then
   vim.cmd 'colorscheme slate'
+else
+  vim.cmd(string.format('colorscheme %s', user.colorscheme))
 end

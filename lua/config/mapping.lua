@@ -1,5 +1,8 @@
 local opts = { noremap = true, silent = true }
 
+-- SAVE BUFFER
+vim.keymap.set('n', '<space>w', ':update<cr>', opts)
+
 -- QUIT
 vim.keymap.set('n', '<space>q', ':quit<cr>', opts)
 
