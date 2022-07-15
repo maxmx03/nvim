@@ -568,7 +568,7 @@ nvim_tree.setup {
   },
   filters = {
     dotfiles = false,
-    custom = { '.git', 'node_modules' },
+    custom = { '^.git$', 'node_modules' },
     exclude = {},
   },
   actions = {
@@ -779,8 +779,8 @@ local diffview = require 'diffview'
 
 diffview.setup()
 --}}}
---
--- --{{{ PLUGIN INDENT BLANKLINE
+
+--{{{ PLUGIN INDENT BLANKLINE
 local indent = require 'indent_blankline'
 
 indent.setup {
@@ -854,14 +854,14 @@ dashboard.custom_center = {
 
 local neovim_welcome = '🎉 Have fun with neovim'
 local neovim_info = ''
-  .. 'Neovim  v'
-  .. vim.version().major
-  .. '.'
-  .. vim.version().minor
-  .. '.'
-  .. vim.version().patch
-  .. '   '
-  .. os.date '%d/%m/%Y'
+    .. 'Neovim  v'
+    .. vim.version().major
+    .. '.'
+    .. vim.version().minor
+    .. '.'
+    .. vim.version().patch
+    .. '   '
+    .. os.date '%d/%m/%Y'
 
 dashboard.custom_footer = { neovim_welcome, neovim_info }
 --}}}
