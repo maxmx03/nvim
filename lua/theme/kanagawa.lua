@@ -4,7 +4,7 @@ local colors = require 'kanagawa.colors'
 local default_colors = colors.setup()
 
 kanagawa.setup {
-  transparent = user.transparency,
+  transparent = false,
   undercurl = true,
   commentStyle = { italic = true },
   keywordStyle = { italic = true },

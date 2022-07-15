@@ -3,7 +3,7 @@ local colors = onedarkpro.get_colors(vim.g.onedarkpro_style)
 
 onedarkpro.setup {
   options = {
-    transparency = user.transparency,
+    transparency = false,
     italic = true,
   },
   hlgroups = {

@@ -1,11 +1,9 @@
 # Neovim - configuration
 
-Simple, easy to use and understand.
+My neovim config for web and mobile development.
 
 <div>
   <img src="https://github.com/maxmx03/milianor-dotfiles/blob/main/docs/nvim.png" />
-  <img src="https://github.com/maxmx03/milianor-dotfiles/blob/main/docs/nvim-2.png" />
-  <img src="https://github.com/maxmx03/milianor-dotfiles/blob/main/docs/nvim-3.png" />
 </div>
 
 
@@ -14,51 +12,57 @@ Simple, easy to use and understand.
 - [Neovim nightly](https://github.com/neovim/neovim/releases)
 - [Nerd Fonts](https://www.nerdfonts.com/font-downloads)
 
-# Installation
 
-## Linux - ubuntu
+# HOW TO CONFIG
 
-```
-sudo apt-get install python3-dev python3-pip python3-pip python3-venv
-sudo add-apt-repository ppa:neovim-ppa/unstable
-sudo apt-get update
-sudo apt-get install neovim
-```
-### Installing dependencies
+Example for frontend dev zA to open fold, zO to open all folds, zC to close all folds.
+to see more:
 
-```
-sudo apt install npm nodejs git gcc fd-find ripgrep
-sudo npm install -g neovim
-python3 -m pip install pynvim
+```lua
+:h fold-commands
 ```
 
-## MacOs
+```lua
+-- IDE TABLE
+ide.sidebar = 'left'
+ide.colorscheme = 'kanagawa'
+ide.formattings = {
+  'prettier',
+}
 
-[brew](https://brew.sh/index_pt-br)
-```
-brew install --HEAD neovim
-```
+ide.diagnostics = {
+  'eslint',
+}
 
-### Installing dependencies
+ide.completions = {
+  'spell',
+}
 
-```
-brew install git node gcc fd ripgrep
-npm install -g neovim
-python3 -m pip install pynvim
-```
+ide.code_actions = {
+  'eslint',
+}
 
-## Windows
+ide.hovers = {}
 
-[scoop](https://scoop.sh/)
-```
-scoop bucket add versions
-scoop install neovim-nightly
-```
+ide.langs = {
+  'css',
+  'scss',
+  'javascript',
+  'typescript',
+  'tsx',
+  'vue',
+  'svelte',
+  'yaml',
+}
 
-### Installing dependencies
-
-```
-scoop install git nodejs gcc fd ripgrep python
-npm install -g neovim
-python3 -m pip install pynvim
+ide.servers = {
+  'html',
+  'emmet_ls',
+  'cssls',
+  'tailwindcss',
+  'tsserver',
+  'vuels',
+  'volar',
+  'svelte',
+}
 ```
