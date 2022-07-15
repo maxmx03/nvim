@@ -2,18 +2,16 @@
 
 My neovim config for web and mobile development.
 
-<div>
-  <img src="https://github.com/maxmx03/milianor-dotfiles/blob/main/docs/nvim.png" />
-</div>
+<img src="https://github.com/maxmx03/milianor-dotfiles/blob/main/docs/nvim.png" />
 
 
-# Prerequisites
+## Prerequisites
 
 - [Neovim nightly](https://github.com/neovim/neovim/releases)
 - [Nerd Fonts](https://www.nerdfonts.com/font-downloads)
 
 
-# HOW TO CONFIG
+## How to config
 
 Example for frontend dev zA to open fold, zO to open all folds, zC to close all folds.
 to see more:
@@ -24,6 +22,7 @@ to see more:
 
 ```lua
 -- IDE TABLE
+local  ide = {}
 ide.sidebar = 'left'
 ide.colorscheme = 'kanagawa'
 ide.formattings = {
