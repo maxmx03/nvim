@@ -9,9 +9,7 @@ onedarkpro.setup {
   hlgroups = {
     NeoTreeDirectoryName = { fg = colors.fg },
     NeoTreeDirectoryIcon = { fg = colors.blue },
-    NeoTreeRootName = {
-      fg = colors.blue,
-    },
+    NeoTreeRootName = { fg = colors.blue },
     NvimTreeFolderName = { fg = colors.fg },
     NvimTreeFolderIcon = { fg = colors.blue },
     NvimTreeRootFolder = { fg = colors.blue },

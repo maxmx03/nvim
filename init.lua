@@ -771,7 +771,7 @@ autopairs.setup {}
 --{{{ PLUGIN COLORIZER
 local colorizer = require 'colorizer'
 
-colorizer.setup {}
+colorizer.setup()
 --}}}
 
 --{{{ PLUGIN DIFFVIEW
