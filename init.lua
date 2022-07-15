@@ -407,7 +407,7 @@ lsp_signature.setup {
 --{{{ PLUGIN LSP SAGA
 local saga = require 'lspsaga'
 
-saga.init_lsp_saga {}
+saga.init_lsp_saga()
 --}}}
 
 --{{{ PLUGIN LSP INSTALLER
@@ -542,7 +542,7 @@ devicons.set_icon {
   ['service.ts'] = icon_config(angular_icon, ts_color, 'typescript'),
 }
 
-devicons.setup {}
+devicons.setup()
 --}}}
 
 --{{{ PLUGIN TREESITTER
@@ -753,19 +753,19 @@ require('lualine').setup {
 --{{{ PLUGIN TABLINE
 local tabline = require 'tabline'
 
-tabline.setup {}
+tabline.setup()
 --}}}
 
 --{{{ PLUGIN AUTOTAG
 local autotag = require 'nvim-ts-autotag'
 
-autotag.setup {}
+autotag.setup()
 --}}}
 
 --{{{ PLUGIN AUTOPAIRS
 local autopairs = require 'nvim-autopairs'
 
-autopairs.setup {}
+autopairs.setup()
 --}}}
 
 --{{{ PLUGIN COLORIZER
@@ -777,10 +777,10 @@ colorizer.setup()
 --{{{ PLUGIN DIFFVIEW
 local diffview = require 'diffview'
 
-diffview.setup {}
+diffview.setup()
 --}}}
-
---{{{ PLUGIN INDENT BLANKLINE
+--
+-- --{{{ PLUGIN INDENT BLANKLINE
 local indent = require 'indent_blankline'
 
 indent.setup {
@@ -796,13 +796,13 @@ indent.setup {
 --{{{ PLUGIN COMMENT
 local comment = require 'Comment'
 
-comment.setup {}
+comment.setup()
 --}}}
 
 --{{{ PLUGIN HOP
 local hop = require 'hop'
 
-hop.setup {}
+hop.setup()
 --}}}
 
 --{{{ PLUGIN DASHBOARD
