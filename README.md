@@ -13,7 +13,7 @@ My neovim config for web and mobile development.
 
 ## How to config
 
-Example for frontend dev zA to open fold, zO to open all folds, zC to close all folds.
+Example for frontend dev, zA to open fold, zO to open all folds, zC to close all folds.
 to see more:
 
 ```lua
@@ -22,7 +22,7 @@ to see more:
 
 ```lua
 -- IDE TABLE
-local  ide = {}
+local ide = {}
 ide.sidebar = 'left'
 ide.colorscheme = 'kanagawa'
 ide.formattings = {
