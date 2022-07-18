@@ -14,6 +14,9 @@ onedarkpro.setup {
     NvimTreeFolderIcon = { fg = colors.blue },
     NvimTreeRootFolder = { fg = colors.blue },
     NvimTreeOpenedFolderName = { fg = colors.blue },
+    TelescopePreviewTitle = { fg = colors.bg, bg = colors.green },
+    TelescopeResultsTitle = { fg = colors.bg, bg = colors.purple },
+    TelescopePromptTitle = { fg = colors.bg, bg = colors.purple },
   },
 }
 

@@ -129,7 +129,7 @@ ide.diagnostics = {
   'eslint',
 }
 ide.completions = {
-  'spell',
+  -- 'spell',
 }
 ide.code_actions = {
   'eslint',
@@ -288,53 +288,22 @@ vim.keymap.set('x', '<space>cc', '<Plug>(comment_toggle_linewise_visual)')
 
 --}}}
 
---{{{ PLUGIN NULL-LS
-local null_ls = require 'null-ls'
+--{{{ PLUGIN AUTOTAG
+local autotag = require 'nvim-ts-autotag'
 
-local function map(builtins, sources, callback)
-  if sources then
-    for _, source in ipairs(sources) do
-      callback(builtins[source])
-    end
-  end
-end
+autotag.setup()
+--}}}
 
-local function sources(opts)
-  local s = {}
+--{{{ PLUGIN AUTOPAIRS
+local autopairs = require 'nvim-autopairs'
 
-  map(null_ls.builtins.formatting, opts.formattings, function(source)
-    table.insert(s, source)
-  end)
+autopairs.setup()
+--}}}
 
-  map(null_ls.builtins.diagnostics, opts.diagnostics, function(source)
-    table.insert(s, source)
-  end)
+--{{{ PLUGIN COMMENT
+local comment = require 'Comment'
 
-  map(null_ls.builtins.completion, opts.completions, function(source)
-    table.insert(s, source)
-  end)
-
-  map(null_ls.builtins.code_actions, opts.code_actions, function(source)
-    table.insert(s, source)
-  end)
-
-  map(null_ls.builtins.hover, opts.hovers, function(source)
-    table.insert(s, source)
-  end)
-
-  return s
-end
-
-null_ls.setup {
-  debug = false,
-  sources = sources {
-    formattings = ide.formattings,
-    diagnostics = ide.diagnostics,
-    completions = ide.completions,
-    code_actions = ide.code_actions,
-    hovers = ide.hovers,
-  },
-}
+comment.setup()
 --}}}
 
 --{{{ PLUGIN CMP
@@ -395,220 +364,105 @@ cmp.setup.cmdline(':', {
 })
 --}}}
 
---{{{ PLUGIN LSP SIGNATURE
-local lsp_signature = require 'lsp_signature'
+--{{{ PLUGIN COLORIZER
+local colorizer = require 'colorizer'
 
-lsp_signature.setup {
-  hint_prefix = '🤔️ ',
-  floating_window = false,
+colorizer.setup()
+--}}}
+
+--{{{ PLUGIN DASHBOARD
+local dashboard = require 'dashboard'
+
+dashboard.custom_header = {
+  [[      ___           ___           ___                                    ___     ]],
+  [[     /__/\         /  /\         /  /\          ___        ___          /__/\    ]],
+  [[     \  \:\       /  /:/_       /  /::\        /__/\      /  /\        |  |::\   ]],
+  [[      \  \:\     /  /:/ /\     /  /:/\:\       \  \:\    /  /:/        |  |:|:\  ]],
+  [[  _____\__\:\   /  /:/ /:/_   /  /:/  \:\       \  \:\  /__/::\      __|__|:|\:\ ]],
+  [[ /__/::::::::\ /__/:/ /:/ /\ /__/:/ \__\:\  ___  \__\:\ \__\/\:\__  /__/::::| \:\]],
+  [[ \  \:\~~\~~\/ \  \:\/:/ /:/ \  \:\ /  /:/ /__/\ |  |:|    \  \:\/\ \  \:\~~\__\/]],
+  [[  \  \:\  ~~~   \  \::/ /:/   \  \:\  /:/  \  \:\|  |:|     \__\::/  \  \:\      ]],
+  [[   \  \:\        \  \:\/:/     \  \:\/:/    \  \:\__|:|     /__/:/    \  \:\     ]],
+  [[    \  \:\        \  \::/       \  \::/      \__\::::/      \__\/      \  \:\    ]],
+  [[     \__\/         \__\/         \__\/           ~~~~                   \__\/    ]],
+  [[                                                                                 ]],
+  [[                                                                                 ]],
+  [[                                                                                 ]],
 }
---}}}
 
---{{{ PLUGIN LSP SAGA
-local saga = require 'lspsaga'
-
-saga.init_lsp_saga()
---}}}
-
---{{{ PLUGIN LSP INSTALLER
-local lsp_installer = require 'nvim-lsp-installer'
-
-lsp_installer.setup {
-  automatic_installation = true,
-  ui = {
-    icons = {
-      server_installed = '✓',
-      server_pending = '➜',
-      server_uninstalled = '✗',
-    },
+dashboard.custom_center = {
+  {
+    icon = '  ',
+    desc = 'File Browser                            ',
+    action = 'NvimTreeToggle',
+    shortcut = 'SPC e  ',
+  },
+  {
+    icon = '  ',
+    desc = 'Find  File                              ',
+    action = 'Telescope find_files find_command=rg,--hidden,--files',
+    shortcut = 'SPC f f',
+  },
+  {
+    icon = '  ',
+    desc = 'Find  Word                              ',
+    action = 'Telescope live_grep',
+    shortcut = 'SPC f g',
+  },
+  {
+    icon = '  ',
+    desc = 'Exit                                    ',
+    action = 'qa',
+    shortcut = 'SPC q  ',
   },
 }
+
+local neovim_welcome = '🎉 Have fun with neovim'
+local neovim_info = ''
+  .. 'Neovim  v'
+  .. vim.version().major
+  .. '.'
+  .. vim.version().minor
+  .. '.'
+  .. vim.version().patch
+  .. '   '
+  .. os.date '%d/%m/%Y'
+
+dashboard.custom_footer = { neovim_welcome, neovim_info }
 --}}}
 
---{{{ PLUGIN LSPCONFIG
-local lsp = require 'lspconfig'
+--{{{ PLUGIN DIFFVIEW
+local diffview = require 'diffview'
 
-local on_attach = function(_, bufnr)
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+diffview.setup()
+--}}}
 
-  local bufopts = { noremap = true, silent = true, buffer = bufnr }
+--{{{ PLUGIN FIDGET
+local fidget = require 'fidget'
 
-  vim.keymap.set('n', '<space>l', vim.lsp.buf.format, bufopts)
-end
-
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-
-local config = {
-  on_attach = on_attach,
-  flags = {
-    debouce_text_changes = 150,
-  },
-  capabilities = capabilities,
-}
-
-for _, server in pairs(ide.servers) do
-  if server == 'sumneko_lua' then
-    local luadev = require 'lua-dev'
-
-    config = luadev.setup {
-      library = {
-        vimruntime = true,
-        types = true,
-        plugins = true,
-      },
-      runtime_path = false,
-      lspconfig = {
-        on_attach = on_attach,
-        flags = {
-          debouce_text_changes = 150,
-        },
-        capabilities = capabilities,
-      },
-    }
-  end
-
-  lsp[server].setup(config)
-end
-
-vim.fn.sign_define('DiagnosticSignError', { text = '', texthl = 'DiagnosticSignError' })
-vim.fn.sign_define('DiagnosticSignWarn', { text = '', texthl = 'DiagnosticSignWarn' })
-vim.fn.sign_define('DiagnosticSignInfo', { text = '', texthl = 'DiagnosticSignInfo' })
-vim.fn.sign_define('DiagnosticSignHint', { text = '', texthl = 'DiagnosticSignHint' })
-
-vim.diagnostic.config {
-  virtual_text = {
-    prefix = '',
+fidget.setup {
+  window = {
+    blend = 0,
   },
 }
 --}}}
 
---{{{ PLUGIN NVIM WEB DEVICONS
-local devicons = require 'nvim-web-devicons'
+--{{{ PLUGIN HOP
+local hop = require 'hop'
 
-local function icon_config(icon, color, name)
-  return {
-    icon = icon,
-    color = color,
-    name = name,
-  }
-end
-
--- custom icons
-local git_icon = ''
-local test_icon = ''
-local angular_icon = ''
-
--- custom colors
-local git_color = '#C84b31'
-local ruby_color = '#FC4F4F'
-local gem_color = '#FA4EAB'
-local rubocop_color = '#C0C0C0'
-
--- default icons
-local ruby_icon = devicons.get_icon_color('index.rb', 'rb')
-
--- default colors
-local _, js_color = devicons.get_icon_color('index.js', 'js')
-local _, ts_color = devicons.get_icon_color('index.ts', 'ts')
-local _, html_color = devicons.get_icon_color('index.html', 'html')
-local _, css_color = devicons.get_icon_color('index.css', 'css')
-
-devicons.set_icon {
-  -- git
-  ['.gitignore'] = icon_config(git_icon, git_color, 'git'),
-  ['.gitkeep'] = icon_config(git_icon, git_color, 'git'),
-
-  -- ruby
-  rb = icon_config(ruby_icon, ruby_color, 'ruby'),
-  ['config.ru'] = icon_config(ruby_icon, ruby_color, 'ruby'),
-  ['Gemfile'] = icon_config(ruby_icon, gem_color, 'ruby'),
-  ['.rubocop.yml'] = icon_config(ruby_icon, rubocop_color, 'yaml'),
-
-  -- test
-  ['spec.js'] = icon_config(test_icon, js_color, 'javascript'),
-  ['spec.jsx'] = icon_config(test_icon, js_color, 'javascriptreact'),
-  ['spec.ts'] = icon_config(test_icon, ts_color, 'typescript'),
-  ['spec.tsx'] = icon_config(test_icon, ts_color, 'typescriptreact'),
-  ['test.js'] = icon_config(test_icon, js_color, 'javascript'),
-  ['test.jsx'] = icon_config(test_icon, js_color, 'javascriptreact'),
-  ['test.ts'] = icon_config(test_icon, ts_color, 'typescript'),
-  ['test.tsx'] = icon_config(test_icon, ts_color, 'typescriptreact'),
-
-  -- angular
-  ['component.html'] = icon_config(angular_icon, html_color, 'html'),
-  ['component.ts'] = icon_config(angular_icon, ts_color, 'typescript'),
-  ['component.css'] = icon_config(angular_icon, css_color, 'css'),
-  ['module.ts'] = icon_config(angular_icon, ts_color, 'typescript'),
-  ['service.ts'] = icon_config(angular_icon, ts_color, 'typescript'),
-}
-
-devicons.setup()
+hop.setup()
 --}}}
 
---{{{ PLUGIN TREESITTER
-local treesitter = require 'nvim-treesitter.configs'
+--{{{ PLUGIN INDENT BLANKLINE
+local indent = require 'indent_blankline'
 
-treesitter.setup {
-  ensure_installed = ide.langs,
-  sync_install = false,
-  highlight = {
-    enable = true,
-    additional_vim_regex_highlighting = false,
-  },
-}
---}}}
-
---{{{ PLUGIN NVIM TREE
-local nvim_tree = require 'nvim-tree'
-
-nvim_tree.setup {
-  view = {
-    adaptive_size = true,
-    side = ide.sidebar,
-  },
-  filters = {
-    dotfiles = false,
-    custom = { '^.git$', 'node_modules' },
-    exclude = {},
-  },
-  actions = {
-    use_system_clipboard = true,
-    change_dir = {
-      enable = true,
-      global = false,
-      restrict_above_cwd = false,
-    },
-    expand_all = {
-      max_folder_discovery = 300,
-      exclude = {},
-    },
-    open_file = {
-      quit_on_open = true,
-      resize_window = true,
-      window_picker = {
-        enable = true,
-        chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890',
-        exclude = {
-          filetype = { 'notify', 'packer', 'qf', 'diff', 'fugitive', 'fugitiveblame' },
-          buftype = { 'nofile', 'terminal', 'help' },
-        },
-      },
-    },
-    remove_file = {
-      close_window = true,
-    },
-  },
-}
---}}}
-
---{{{ PLUGIN TELESCOPE
-local telescope = require 'telescope'
-
-telescope.setup {
-  defaults = {
-    file_ignore_patterns = { 'node_modules', '.git', '.next', 'build', 'dist', 'android', 'ios' },
-    prompt_prefix = ' ',
-  },
+indent.setup {
+  char = '▏',
+  show_trailing_blankline_indent = false,
+  show_first_indent_level = true,
+  use_treesitter = true,
+  show_current_context = true,
+  filetype_exclude = { 'dashboard' },
 }
 --}}}
 
@@ -750,128 +604,274 @@ require('lualine').setup {
 }
 --}}}
 
+--{{{ PLUGIN LSP SIGNATURE
+local lsp_signature = require 'lsp_signature'
+
+lsp_signature.setup {
+  hint_prefix = '🤔️ ',
+  floating_window = false,
+}
+--}}}
+
+--{{{ PLUGIN LSP SAGA
+local saga = require 'lspsaga'
+
+saga.init_lsp_saga()
+--}}}
+
+--{{{ PLUGIN LSP INSTALLER
+local lsp_installer = require 'nvim-lsp-installer'
+
+lsp_installer.setup {
+  automatic_installation = true,
+  ui = {
+    icons = {
+      server_installed = '✓',
+      server_pending = '➜',
+      server_uninstalled = '✗',
+    },
+  },
+}
+--}}}
+
+--{{{ PLUGIN LSPCONFIG
+local lsp = require 'lspconfig'
+
+local on_attach = function(_, bufnr)
+  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  local bufopts = { noremap = true, silent = true, buffer = bufnr }
+
+  vim.keymap.set('n', '<space>l', vim.lsp.buf.format, bufopts)
+end
+
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+local config = {
+  on_attach = on_attach,
+  flags = {
+    debouce_text_changes = 150,
+  },
+  capabilities = capabilities,
+}
+
+for _, server in pairs(ide.servers) do
+  if server == 'sumneko_lua' then
+    local luadev = require 'lua-dev'
+
+    config = luadev.setup {
+      library = {
+        vimruntime = true,
+        types = true,
+        plugins = true,
+      },
+      runtime_path = false,
+      lspconfig = {
+        on_attach = on_attach,
+        flags = {
+          debouce_text_changes = 150,
+        },
+        capabilities = capabilities,
+      },
+    }
+  end
+
+  lsp[server].setup(config)
+end
+
+vim.fn.sign_define('DiagnosticSignError', { text = '', texthl = 'DiagnosticSignError' })
+vim.fn.sign_define('DiagnosticSignWarn', { text = '', texthl = 'DiagnosticSignWarn' })
+vim.fn.sign_define('DiagnosticSignInfo', { text = '', texthl = 'DiagnosticSignInfo' })
+vim.fn.sign_define('DiagnosticSignHint', { text = '', texthl = 'DiagnosticSignHint' })
+
+vim.diagnostic.config {
+  virtual_text = {
+    prefix = '',
+  },
+}
+--}}}
+
+--{{{ PLUGIN NULL-LS
+local null_ls = require 'null-ls'
+
+local function map(builtins, sources, callback)
+  if sources then
+    for _, source in ipairs(sources) do
+      callback(builtins[source])
+    end
+  end
+end
+
+local function sources(opts)
+  local s = {}
+
+  map(null_ls.builtins.formatting, opts.formattings, function(source)
+    table.insert(s, source)
+  end)
+
+  map(null_ls.builtins.diagnostics, opts.diagnostics, function(source)
+    table.insert(s, source)
+  end)
+
+  map(null_ls.builtins.completion, opts.completions, function(source)
+    table.insert(s, source)
+  end)
+
+  map(null_ls.builtins.code_actions, opts.code_actions, function(source)
+    table.insert(s, source)
+  end)
+
+  map(null_ls.builtins.hover, opts.hovers, function(source)
+    table.insert(s, source)
+  end)
+
+  return s
+end
+
+null_ls.setup {
+  debug = false,
+  sources = sources {
+    formattings = ide.formattings,
+    diagnostics = ide.diagnostics,
+    completions = ide.completions,
+    code_actions = ide.code_actions,
+    hovers = ide.hovers,
+  },
+}
+--}}}
+
+--{{{ PLUGIN NVIM WEB DEVICONS
+local devicons = require 'nvim-web-devicons'
+
+local function icon_config(icon, color, name)
+  return {
+    icon = icon,
+    color = color,
+    name = name,
+  }
+end
+
+-- custom icons
+local git_icon = ''
+local test_icon = ''
+local angular_icon = ''
+
+-- custom colors
+local git_color = '#C84b31'
+local ruby_color = '#FC4F4F'
+local gem_color = '#FA4EAB'
+local rubocop_color = '#C0C0C0'
+
+-- default icons
+local ruby_icon = devicons.get_icon_color('index.rb', 'rb')
+
+-- default colors
+local _, js_color = devicons.get_icon_color('index.js', 'js')
+local _, ts_color = devicons.get_icon_color('index.ts', 'ts')
+local _, html_color = devicons.get_icon_color('index.html', 'html')
+local _, css_color = devicons.get_icon_color('index.css', 'css')
+
+devicons.set_icon {
+  -- git
+  ['.gitignore'] = icon_config(git_icon, git_color, 'git'),
+  ['.gitkeep'] = icon_config(git_icon, git_color, 'git'),
+
+  -- ruby
+  rb = icon_config(ruby_icon, ruby_color, 'ruby'),
+  ['config.ru'] = icon_config(ruby_icon, ruby_color, 'ruby'),
+  ['Gemfile'] = icon_config(ruby_icon, gem_color, 'ruby'),
+  ['.rubocop.yml'] = icon_config(ruby_icon, rubocop_color, 'yaml'),
+
+  -- test
+  ['spec.js'] = icon_config(test_icon, js_color, 'javascript'),
+  ['spec.jsx'] = icon_config(test_icon, js_color, 'javascriptreact'),
+  ['spec.ts'] = icon_config(test_icon, ts_color, 'typescript'),
+  ['spec.tsx'] = icon_config(test_icon, ts_color, 'typescriptreact'),
+  ['test.js'] = icon_config(test_icon, js_color, 'javascript'),
+  ['test.jsx'] = icon_config(test_icon, js_color, 'javascriptreact'),
+  ['test.ts'] = icon_config(test_icon, ts_color, 'typescript'),
+  ['test.tsx'] = icon_config(test_icon, ts_color, 'typescriptreact'),
+
+  -- angular
+  ['component.html'] = icon_config(angular_icon, html_color, 'html'),
+  ['component.ts'] = icon_config(angular_icon, ts_color, 'typescript'),
+  ['component.css'] = icon_config(angular_icon, css_color, 'css'),
+  ['module.ts'] = icon_config(angular_icon, ts_color, 'typescript'),
+  ['service.ts'] = icon_config(angular_icon, ts_color, 'typescript'),
+}
+
+devicons.setup()
+--}}}
+
+--{{{ PLUGIN NVIM TREE
+local nvim_tree = require 'nvim-tree'
+
+nvim_tree.setup {
+  view = {
+    adaptive_size = true,
+    side = ide.sidebar,
+  },
+  filters = {
+    dotfiles = false,
+    custom = { '^.git$', 'node_modules' },
+    exclude = {},
+  },
+  actions = {
+    use_system_clipboard = true,
+    change_dir = {
+      enable = true,
+      global = false,
+      restrict_above_cwd = false,
+    },
+    expand_all = {
+      max_folder_discovery = 300,
+      exclude = {},
+    },
+    open_file = {
+      quit_on_open = true,
+      resize_window = true,
+      window_picker = {
+        enable = true,
+        chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890',
+        exclude = {
+          filetype = { 'notify', 'packer', 'qf', 'diff', 'fugitive', 'fugitiveblame' },
+          buftype = { 'nofile', 'terminal', 'help' },
+        },
+      },
+    },
+    remove_file = {
+      close_window = true,
+    },
+  },
+}
+--}}}
+
+--{{{ PLUGIN TREESITTER
+local treesitter = require 'nvim-treesitter.configs'
+
+treesitter.setup {
+  ensure_installed = ide.langs,
+  sync_install = false,
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = false,
+  },
+}
+--}}}
+
 --{{{ PLUGIN TABLINE
 local tabline = require 'tabline'
 
 tabline.setup()
 --}}}
 
---{{{ PLUGIN AUTOTAG
-local autotag = require 'nvim-ts-autotag'
+--{{{ PLUGIN TELESCOPE
+local telescope = require 'telescope'
 
-autotag.setup()
---}}}
-
---{{{ PLUGIN AUTOPAIRS
-local autopairs = require 'nvim-autopairs'
-
-autopairs.setup()
---}}}
-
---{{{ PLUGIN COLORIZER
-local colorizer = require 'colorizer'
-
-colorizer.setup()
---}}}
-
---{{{ PLUGIN DIFFVIEW
-local diffview = require 'diffview'
-
-diffview.setup()
---}}}
-
---{{{ PLUGIN INDENT BLANKLINE
-local indent = require 'indent_blankline'
-
-indent.setup {
-  char = '▏',
-  show_trailing_blankline_indent = false,
-  show_first_indent_level = true,
-  use_treesitter = true,
-  show_current_context = true,
-  filetype_exclude = { 'dashboard' },
-}
---}}}
-
---{{{ PLUGIN COMMENT
-local comment = require 'Comment'
-
-comment.setup()
---}}}
-
---{{{ PLUGIN HOP
-local hop = require 'hop'
-
-hop.setup()
---}}}
-
---{{{ PLUGIN DASHBOARD
-local dashboard = require 'dashboard'
-
-dashboard.custom_header = {
-  [[      ___           ___           ___                                    ___     ]],
-  [[     /__/\         /  /\         /  /\          ___        ___          /__/\    ]],
-  [[     \  \:\       /  /:/_       /  /::\        /__/\      /  /\        |  |::\   ]],
-  [[      \  \:\     /  /:/ /\     /  /:/\:\       \  \:\    /  /:/        |  |:|:\  ]],
-  [[  _____\__\:\   /  /:/ /:/_   /  /:/  \:\       \  \:\  /__/::\      __|__|:|\:\ ]],
-  [[ /__/::::::::\ /__/:/ /:/ /\ /__/:/ \__\:\  ___  \__\:\ \__\/\:\__  /__/::::| \:\]],
-  [[ \  \:\~~\~~\/ \  \:\/:/ /:/ \  \:\ /  /:/ /__/\ |  |:|    \  \:\/\ \  \:\~~\__\/]],
-  [[  \  \:\  ~~~   \  \::/ /:/   \  \:\  /:/  \  \:\|  |:|     \__\::/  \  \:\      ]],
-  [[   \  \:\        \  \:\/:/     \  \:\/:/    \  \:\__|:|     /__/:/    \  \:\     ]],
-  [[    \  \:\        \  \::/       \  \::/      \__\::::/      \__\/      \  \:\    ]],
-  [[     \__\/         \__\/         \__\/           ~~~~                   \__\/    ]],
-  [[                                                                                 ]],
-  [[                                                                                 ]],
-  [[                                                                                 ]],
-}
-
-dashboard.custom_center = {
-  {
-    icon = '  ',
-    desc = 'File Browser                            ',
-    action = 'NvimTreeToggle',
-    shortcut = 'SPC e  ',
-  },
-  {
-    icon = '  ',
-    desc = 'Find  File                              ',
-    action = 'Telescope find_files find_command=rg,--hidden,--files',
-    shortcut = 'SPC f f',
-  },
-  {
-    icon = '  ',
-    desc = 'Find  Word                              ',
-    action = 'Telescope live_grep',
-    shortcut = 'SPC f g',
-  },
-  {
-    icon = '  ',
-    desc = 'Exit                                    ',
-    action = 'qa',
-    shortcut = 'SPC q  ',
-  },
-}
-
-local neovim_welcome = '🎉 Have fun with neovim'
-local neovim_info = ''
-    .. 'Neovim  v'
-    .. vim.version().major
-    .. '.'
-    .. vim.version().minor
-    .. '.'
-    .. vim.version().patch
-    .. '   '
-    .. os.date '%d/%m/%Y'
-
-dashboard.custom_footer = { neovim_welcome, neovim_info }
---}}}
-
---{{{ PLUGIN FIDGET
-local fidget = require 'fidget'
-
-fidget.setup {
-  window = {
-    blend = 0,
+telescope.setup {
+  defaults = {
+    file_ignore_patterns = { 'node_modules', '.git', '.next', 'build', 'dist', 'android', 'ios' },
+    prompt_prefix = ' ',
   },
 }
 --}}}

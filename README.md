@@ -45,6 +45,7 @@ ide.hovers = {}
 ide.langs = {
   'css',
   'scss',
+  'html',
   'javascript',
   'typescript',
   'tsx',
