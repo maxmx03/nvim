@@ -222,16 +222,17 @@ vim.api.nvim_exec(
 
 --{{{ IDE AUTOCMD
 vim.api.nvim_create_autocmd({ 'BufWinEnter' }, {
+  pattern = { '*.html', '*.css', '*.scss', '*.vue', '*.svelte' },
+  once = true,
   callback = function()
+    print('formatoptions')
     vim.cmd 'set formatoptions-=cro'
   end,
 })
 
 vim.api.nvim_create_autocmd({ 'InsertLeave', 'TextChanged' }, {
   pattern = '*.*',
-  callback = function()
-    vim.api.nvim_cmd({ cmd = 'update' }, { output = false })
-  end,
+  command = 'update',
 })
 --}}}
 
