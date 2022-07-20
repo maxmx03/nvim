@@ -100,19 +100,22 @@ packer.startup {
   },
 }
 
-vim.cmd [[
+vim.api.nvim_exec(
+  [[
   augroup packer_ide_config
     autocmd!
     autocmd BufWritePost plugins.lua source <afile> | PackerCompile
   augroup end
-]]
+]],
+  true
+)
 --}}}
 
 --{{{ PLUGIN IMPATIENT
 success = pcall(require, 'impatient')
 
 if not success then
-  vim.cmd 'colorscheme slate'
+  vim.api.nvim_cmd({ cmd = 'colorscheme', args = { 'slate' } }, { output = false })
   return
 end
 --}}}
@@ -174,6 +177,7 @@ ide.servers = {
   'html',
   'vuels',
   'volar',
+  'vimls',
   'emmet_ls',
   'tailwindcss',
   'svelte',
@@ -204,13 +208,16 @@ vim.opt.whichwrap:append '<,>,[,],h,l'
 vim.o.termguicolors = true
 vim.g.python3_host_prog = '/usr/bin/python3.10'
 
-vim.cmd [[
+vim.api.nvim_exec(
+  [[
   if has('python')
     set pyx=2
   elseif has('python3') 
     set pyx=3
   endif
-]]
+]],
+  false
+)
 --}}}
 
 --{{{ IDE AUTOCMD
@@ -223,7 +230,7 @@ vim.api.nvim_create_autocmd({ 'BufWinEnter' }, {
 vim.api.nvim_create_autocmd({ 'InsertLeave', 'TextChanged' }, {
   pattern = '*.*',
   callback = function()
-    vim.cmd 'update'
+    vim.api.nvim_cmd({ cmd = 'update' }, { output = false })
   end,
 })
 --}}}
@@ -1097,5 +1104,5 @@ vim.api.nvim_create_autocmd({ 'CursorMoved', 'BufWinEnter', 'BufFilePost' }, {
 --}}}
 
 --{{{ IDE COLORSCHEME
-vim.cmd('colorscheme ' .. ide.colorscheme)
+vim.api.nvim_cmd({ cmd = 'colorscheme', args = { ide.colorscheme } }, { output = false })
 --}}}
