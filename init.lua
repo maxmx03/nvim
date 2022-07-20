@@ -107,7 +107,7 @@ vim.api.nvim_exec(
     autocmd BufWritePost plugins.lua source <afile> | PackerCompile
   augroup end
 ]],
-  true
+  false
 )
 --}}}
 
