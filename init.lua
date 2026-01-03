@@ -1,7 +1,7 @@
 -- --- Config and Plugins ---
 ---@type base46.config
 vim.g.base46 = {
-  colorscheme = 'solarized',
+  colorscheme = 'darkplus',
   transparency = not vim.g.neovide,
 }
 require 'config.globals'
