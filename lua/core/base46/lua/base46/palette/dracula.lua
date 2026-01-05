@@ -15,8 +15,8 @@ local dracula = {
   darkblue = '#8BE9FD',
   base_30 = {
     base00 = '#282A36', -- Default background
-    base01 = shade('#6272A4', 5), -- Float background
-    base02 = shade('#6272A4', 5), -- Statusline background
+    base01 = shade('#6272A4', 7), -- Float background
+    base02 = shade('#6272A4', 7), -- Statusline background
     base03 = '#6272A4', -- WinSeparator, Border
     base04 = '#F8F8F2', -- Statusline foreground
     base05 = '#F8F8F2', -- Default Foreground, Caret, Delimiters, Operators
@@ -64,8 +64,8 @@ local dracula = {
     base0F = '#BD93F9', -- Deprecated, Opening/Closing Embedded Language Tags, e.g. `<?php ?>`
   },
   groups = {
-    DashboardKey = { fg = '#FF79C6' }
-  }
+    DashboardKey = { fg = '#FF79C6' },
+  },
 }
 
 return dracula
