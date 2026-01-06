@@ -40,3 +40,4 @@ o.guicursor =
 o.sessionoptions = 'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions'
 o.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 o.foldmethod = 'expr'
+o.shell = '/bin/fish'

@@ -1,3 +1,6 @@
+local color = require 'base46.color'
+local shade = color.shade
+local blend = color.blend
 --- Credit and Reference: loctvl842/monokai-pro.nvim
 
 ---@class base46
@@ -14,11 +17,11 @@ local monokai = {
   magenta = '#ab9df2', -- Adjust as necessary
   red = '#ff6188',
   base_30 = {
-    -- base00 = '#2d2a2e', -- Default background
-    base00 = '#201d20', -- Default background
+    base00 = '#2d2a2e', -- Default background
     base01 = '#19181a', -- Float background
     base02 = '#221f22', -- Statusline background
-    base03 = '#939293', -- WinSeparator, Border
+    -- base03 = '#939293', -- WinSeparator, Border
+    base03 = shade('#fc9867', 5), -- WinSeparator, Border
     base04 = '#a3a2a2', -- Statusline foreground
     base05 = '#c1c0bf', -- Default Foreground, Caret, Delimiters, Operators
     base06 = '#a9dc76', -- Diff Added
@@ -44,12 +47,13 @@ local monokai = {
     base0Q = '#ffd866', -- Folder Background
     base0R = '#c1c0c0', -- Cursor Color
     base0S = '#ff6188', -- Accent, can be used as primary color
-    base0T = '#ff6188', -- Title
+    base0T = '#fc9867', -- Title
   },
   base_16 = {
     base00 = '#5b595c', -- LineNr
     base01 = '#4a474a', -- Lighter Background (folding marks)
-    base02 = '#3a3939', -- Selection, Visual Background
+    -- base02 = '#3a3939', -- Selection, Visual Background
+    base02 = blend('#fc9867', '#2d2a2e', 0.2), -- Selection, Visual Background
     base03 = '#727072', -- Comments, Invisibles, Line Highlighting
     base04 = '#fc9867', -- Variable Parameter
     base05 = '#fcfcfa', -- Caret, Delimiters, Operators
