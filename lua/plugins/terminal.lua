@@ -19,6 +19,6 @@ return {
   },
   opts = {
     size = 0.5,
-    layout = 'below',
+    layout = 'float',
   },
 }
