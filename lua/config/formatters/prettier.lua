@@ -6,6 +6,7 @@ return {
   'svelte',
   'vue',
   'json',
+  'jsonc',
   'mdx',
   'markdown',
   'css',

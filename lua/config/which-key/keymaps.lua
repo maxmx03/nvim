@@ -59,6 +59,7 @@ local normal = {
   { '<leader>g', group = 'GitSigns' },
   { '<leader>m', group = 'Mason' },
   { '<leader>x', group = 'Terminal' },
+  { '<leader>f', group = 'Flutter' },
 }
 
 return {
