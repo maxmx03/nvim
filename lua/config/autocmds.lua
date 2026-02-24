@@ -20,10 +20,12 @@ autocmd('LspAttach', {
     end
 
     if client:supports_method 'textDocument/codeLens' then
-      vim.lsp.codelens.refresh()
+      vim.lsp.codelens.enable(true)
       vim.api.nvim_create_autocmd({ 'BufEnter', 'CursorHold', 'InsertLeave' }, {
         buffer = bufnr,
-        callback = vim.lsp.codelens.refresh,
+        callback = function()
+          vim.lsp.codelens.enable(true)
+        end,
       })
     end
 
@@ -72,7 +74,7 @@ autocmd({ 'BufWinLeave' }, {
   end,
 })
 
-autocmd('Filetype', {
+autocmd('FileType', {
   pattern = { 'dashboard' },
   callback = function()
     vim.o.foldenable = false
