@@ -11,7 +11,7 @@ return {
       { '<leader>mm', '<cmd>Mason<cr>', desc = 'packages' },
       { '<leader>ml', '<cmd>MasonLog<cr>', desc = 'logs' },
       { '<leader>mu', '<cmd>MasonUpdate<cr>', desc = 'update' },
-      { '<leader>ma', '<cmd>MasonUpdate<cr>', desc = 'uninstall all' },
+      { '<leader>ma', '<cmd>MasonUninstallAll<cr>', desc = 'uninstall all' },
     },
   },
   {
