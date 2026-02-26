@@ -1,12 +1,10 @@
-return {
-  {
-    'numToStr/Comment.nvim',
-    config = function()
-      require('Comment').setup()
-    end,
-    keys = {
-      { mode = { 'v' }, '<leader>/', '<Plug>(comment_toggle_linewise_visual)', desc = 'comment' },
-      { '<leader>/', '<Plug>(comment_toggle_linewise_current)', desc = 'comment' },
-    },
+require('Comment').setup {
+  toggler = {
+    line = '<leader>cc',
+    block = '<leader>bc',
+  },
+  opleader = {
+    line = '<leader>c',
+    block = '<leader>b',
   },
 }

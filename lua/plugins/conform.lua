@@ -1,38 +1,43 @@
-local unix = require 'include.unix'
-local formatters = unix.ls 'config/formatters'
-local formatters_by_ft = {}
-for _, formatter in pairs(formatters) do
-  local languages = require('config.formatters.' .. formatter)
-  for _, language in pairs(languages) do
-    local lang_entry = formatters_by_ft[language] ~= nil
-    if not lang_entry then
-      formatters_by_ft[language] = {}
-    end
-    table.insert(formatters_by_ft[language], formatter)
-  end
-end
-
-return {
-  'stevearc/conform.nvim',
-  opts = {
-    formatters_by_ft = formatters_by_ft,
-    c = { lsp_format = 'prefer' },
-    cpp = { lsp_format = 'prefer' },
-    default_format_opts = {
-      lsp_format = 'fallback',
-      stop_after_first = true,
-    },
-    format_on_save = {
-      timeout_ms = 500,
-      stop_after_first = true,
-      lsp_format = 'fallback',
-    },
+local conform = require 'conform'
+local prettier = { 'prettierd', 'prettier' }
+conform.setup {
+  formatters_by_ft = {
+    lua = { 'stylua' },
+    javascript = prettier,
+    javascriptreact = prettier,
+    typescript = prettier,
+    typescriptreact = prettier,
+    json = prettier,
+    jsonc = prettier,
+    mdx = prettier,
+    markdown = prettier,
+    css = prettier,
+    scss = prettier,
+    html = prettier,
+    yaml = prettier,
   },
-  config = function(_, opts)
-    local conform = require 'conform'
-    conform.setup(opts)
-    vim.api.nvim_create_user_command('Conform', function()
-      conform.format {}
-    end, {})
-  end,
+  c = { lsp_format = 'prefer' },
+  cpp = { lsp_format = 'prefer' },
+  default_format_opts = {
+    lsp_format = 'fallback',
+    stop_after_first = true,
+  },
+  format_on_save = {
+    timeout_ms = 500,
+    stop_after_first = true,
+    lsp_format = 'fallback',
+  },
+}
+vim.api.nvim_create_user_command('Format', function()
+  conform.format {}
+end, {})
+
+require('mason-tool-installer').setup {
+
+  -- a list of all tools you want to ensure are installed upon
+  -- start
+  ensure_installed = {
+    'stylua',
+    'prettierd',
+  },
 }
