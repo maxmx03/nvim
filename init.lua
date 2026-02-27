@@ -40,7 +40,6 @@ vim.pack.add {
   { src = 'https://github.com/numToStr/Comment.nvim' },
   { src = 'https://github.com/windwp/nvim-autopairs' },
   { src = 'https://github.com/windwp/nvim-ts-autotag' },
-  { src = 'https://github.com/tpope/vim-fugitive' },
   { src = 'https://github.com/nvimtools/hydra.nvim' },
   { src = 'https://github.com/nvzone/floaterm' },
   { src = 'https://github.com/nvim-treesitter/nvim-treesitter' },
@@ -50,6 +49,7 @@ vim.pack.add {
     src = 'https://github.com/nvim-neo-tree/neo-tree.nvim',
     version = vim.version.range '3',
   },
+  { src = 'https://github.com/folke/flash.nvim' },
   -- {
   --   src = 'https://github.com/maxmx03/supreme-octo-train',
   -- },
@@ -70,6 +70,7 @@ require 'plugins.treesitter'
 require 'plugins.telescope'
 require 'plugins.neo-tree'
 require 'plugins.conform'
+require 'plugins.flash'
 require('base46').setup {
   colorscheme = 'darkplus',
   transparency = true,

@@ -5,12 +5,16 @@
       "src": "https://github.com/numToStr/Comment.nvim"
     },
     "base46": {
-      "rev": "a200f01256ee7576ddafb3abd4544babe3f0b9e9",
+      "rev": "61933481ae3ea1750e98bf4cd90e2151a83d605a",
       "src": "https://github.com/maxmx03/base46"
     },
     "conform.nvim": {
       "rev": "e969e302bced7ffb9a0a0323629f31feb0ca35a6",
       "src": "https://github.com/stevearc/conform.nvim"
+    },
+    "flash.nvim": {
+      "rev": "fcea7ff883235d9024dc41e638f164a450c14ca2",
+      "src": "https://github.com/folke/flash.nvim"
     },
     "floaterm": {
       "rev": "fc2efaf25eeefcb33177d5807c0c745e125cf293",
@@ -21,7 +25,7 @@
       "src": "https://github.com/nvimtools/hydra.nvim"
     },
     "mason-lspconfig.nvim": {
-      "rev": "2ab512d3d8e2fd1f679543c13e0dc4606c3d3d2e",
+      "rev": "9e3a9fe4f1f9f34b19307a2695dee8fbbd0be776",
       "src": "https://github.com/mason-org/mason-lspconfig.nvim"
     },
     "mason-tool-installer.nvim": {
@@ -46,11 +50,11 @@
       "src": "https://github.com/windwp/nvim-autopairs"
     },
     "nvim-lspconfig": {
-      "rev": "f386df19b145607a33885b6110ef5c04faae42cb",
+      "rev": "f2193125da0bff2e4eae8e0a45e343ec9bca4c72",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-treesitter": {
-      "rev": "b9171ede5de41b3f2dfa33fe33ebd585d795f928",
+      "rev": "ae2081cfcd3719d74b600f8377e4a99d1ec19c4a",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "nvim-ts-autotag": {

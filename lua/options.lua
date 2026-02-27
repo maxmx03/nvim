@@ -15,7 +15,7 @@ o.softtabstop = 4
 o.expandtab = false
 o.tabstop = 8
 o.clipboard = 'unnamedplus'
-o.completeopt = 'menu,menuone,noselect'
+o.completeopt = 'menu,menuone,noselect,popup'
 o.fillchars:append { eob = ' ' }
 o.list = true
 o.listchars:append { tab = '→ ' }
@@ -38,3 +38,4 @@ o.termguicolors = true
 o.guicursor =
   'n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175'
 o.shell = '/bin/fish'
+vim.o.winbar = ' %t'
