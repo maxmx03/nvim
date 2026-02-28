@@ -15,34 +15,46 @@ vim.diagnostic.config {
   --   },
   -- },
 }
-local servers = { 'lua_ls', 'gopls' }
+local servers = { 'lua_ls', 'gopls', 'denols', 'ts_ls', 'emmet_ls', 'jsonls' }
 for _, server in ipairs(servers) do
   vim.lsp.config(server, require('servers.' .. server))
 end
+vim.list_extend(servers, {
+  'astro',
+  'bashls',
+  'clangd',
+  'cssls',
+  'cssmodules_ls',
+  'dockerls',
+  'fish_lsp',
+  'marksman',
+  'tailwindcss',
+  'vimls',
+  'vue_ls',
+})
 require('mason').setup()
 require('mason-lspconfig').setup {
   automatic_enable = servers,
   ensure_installed = servers,
 }
-
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('my.lsp', {}),
   callback = function(args)
     local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
     if client:supports_method 'textDocument/implementation' then
-      vim.keymap.set('n', '<leader>li', vim.lsp.buf.implementation)
+      vim.keymap.set('n', '<leader>i', vim.lsp.buf.implementation)
     end
 
     if client:supports_method 'textDocument/definition' then
-      vim.keymap.set('n', '<leader>ld', vim.lsp.buf.definition)
+      vim.keymap.set('n', '<leader>d', vim.lsp.buf.definition)
     end
 
     if client:supports_method 'textDocument/hover' then
-      vim.keymap.set('n', '<leader>lh', vim.lsp.buf.hover)
+      vim.keymap.set('n', '<leader>h', vim.lsp.buf.hover)
     end
 
     if client:supports_method 'textDocument/codeAction' then
-      vim.keymap.set('n', '<leader>lc', vim.lsp.buf.code_action)
+      vim.keymap.set('n', '<leader>c', vim.lsp.buf.code_action)
     end
 
     if client:supports_method 'textDocument/inlayHint' then

@@ -11,7 +11,6 @@ vim.keymap.set('n', 'ss', '<cmd>vsplit<CR>', opts)
 vim.keymap.set('n', 'sv', '<cmd>split<CR>', opts)
 vim.keymap.set('n', '<leader>x', '<cmd>FloatermToggle<CR>', opts)
 vim.keymap.set('t', '<leader>x', '<cmd>FloatermToggle<CR>', opts)
-vim.keymap.set('n', '<leader>p', vim.pack.update, opts)
 vim.keymap.set('n', '<leader>e', '<cmd>Neotree toggle position=float<CR>')
 vim.keymap.set('n', '<leader>r', '<cmd>Neotree buffers position=float<CR>')
 vim.keymap.set('n', '<leader>f', '<cmd>Format<CR>')
@@ -21,3 +20,17 @@ vim.keymap.set('n', '<C-Left>', '<C-w>h')
 vim.keymap.set('n', '<C-Down>', '<C-w>j')
 vim.keymap.set('n', '<leader>o', vim.diagnostic.open_float)
 vim.keymap.set('n', 'll', vim.diagnostic.setloclist)
+vim.keymap.set('n', '<leader>p', vim.pack.update, opts)
+vim.keymap.set('n', '<leader>pd', function()
+  local unix = require 'lib.unix'
+  local plugins, err = unix.ls('/site/pack/core/opt', 'data')
+  if err ~= nil then
+    vim.notify(err, vim.log.levels.ERROR)
+    return
+  end
+  local remove = {}
+  vim.ui.select(plugins, { prompt = 'select plugin to delete' }, function(plugin)
+    table.insert(remove, plugin)
+  end)
+  vim.pack.del(remove)
+end, opts)

@@ -50,6 +50,9 @@ vim.pack.add {
     version = vim.version.range '3',
   },
   { src = 'https://github.com/folke/flash.nvim' },
+  { src = 'https://github.com/b0o/SchemaStore.nvim' },
+  { src = 'https://github.com/maxmx03/modeline.nvim' },
+  { src = 'https://github.com/lewis6991/gitsigns.nvim' },
   -- {
   --   src = 'https://github.com/maxmx03/supreme-octo-train',
   -- },
@@ -71,6 +74,7 @@ require 'plugins.telescope'
 require 'plugins.neo-tree'
 require 'plugins.conform'
 require 'plugins.flash'
+require 'plugins.gitsigns'
 require('base46').setup {
   colorscheme = 'darkplus',
   transparency = true,

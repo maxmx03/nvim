@@ -15,8 +15,18 @@ local languages = {
   'diff',
   'sql',
   'vimdoc',
+  'scss',
+  'css',
+  'typescript',
+  'tsx',
+  'json',
+  'bash',
+  'fish',
 }
 require('nvim-treesitter').install(languages)
+table.insert(languages, 'typescriptreact')
+table.insert(languages, 'jsonc')
+table.insert(languages, 'sh')
 vim.api.nvim_create_autocmd('FileType', {
   pattern = languages,
   callback = function()
