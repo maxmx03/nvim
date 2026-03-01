@@ -32,6 +32,13 @@ for _, plugin in ipairs(builtin_plugs) do
 end
 require 'options'
 require 'keymaps'
+local hooks = function(ev)
+  local name, kind = ev.data.spec.name, ev.data.kind
+  if name == 'blink' and kind == 'install' then
+    vim.fn.jobstart({ 'cargo', 'build', '--release' }, { cwd = ev.data.path })
+  end
+end
+vim.api.nvim_create_autocmd('PackChanged', { callback = hooks })
 vim.pack.add {
   { src = 'https://github.com/neovim/nvim-lspconfig' },
   { src = 'https://github.com/mason-org/mason.nvim' },
@@ -53,6 +60,7 @@ vim.pack.add {
   { src = 'https://github.com/b0o/SchemaStore.nvim' },
   { src = 'https://github.com/maxmx03/modeline.nvim' },
   { src = 'https://github.com/lewis6991/gitsigns.nvim' },
+  { src = 'https://github.com/saghen/blink.cmp', name = 'blink' },
   -- {
   --   src = 'https://github.com/maxmx03/supreme-octo-train',
   -- },
@@ -75,7 +83,14 @@ require 'plugins.neo-tree'
 require 'plugins.conform'
 require 'plugins.flash'
 require 'plugins.gitsigns'
+local color = require 'base46.color'
+local shade = color.shade
 require('base46').setup {
-  colorscheme = 'darkplus',
+  colorscheme = 'onedark',
   transparency = true,
+  themes = { 'onedark', 'darkplus' },
+  groups = {
+    { name = 'StatusLineNC', val = { fg = shade('#a0a8b7', 3), bg = shade('#1f2329', 3) } },
+    { name = '@lsp.type.modifier.java', val = { link = 'Keyword' } },
+  },
 }
