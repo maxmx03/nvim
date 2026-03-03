@@ -23,6 +23,7 @@ local languages = {
   'bash',
   'fish',
   'java',
+  'html',
 }
 require('nvim-treesitter').install(languages)
 table.insert(languages, 'typescriptreact')

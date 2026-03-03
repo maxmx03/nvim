@@ -6,7 +6,7 @@ require('neo-tree').setup {
       enabled = true,
       leave_dirs_open = true,
     },
-    group_empty_dirs = false,
+    group_empty_dirs = true,
     filtered_items = {
       hide_hidden = false,
       hide_dotfiles = false,
