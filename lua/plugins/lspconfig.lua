@@ -87,11 +87,17 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
     vim.api.nvim_create_autocmd('BufWritePre', {
       pattern = '*.go',
-      callback = function()
-        vim.lsp.buf.code_action {
-          context = { only = { 'source.organizeImports' }, diagnostics = {} },
-          apply = true,
-        }
+      callback = function(ev)
+        local count = vim.diagnostic.count(ev.buf)
+        if count[1] ~= nil then
+          vim.lsp.buf.code_action {
+            context = {
+              only = { 'source.organizeImports', 'source.fixAll' },
+              diagnostics = {},
+            },
+            apply = true,
+          }
+        end
       end,
     })
   end,
