@@ -30,6 +30,7 @@ local builtin_plugs = {
 for _, plugin in ipairs(builtin_plugs) do
   vim.g['loaded_' .. plugin] = true
 end
+require 'lib.pack'
 require 'options'
 require 'keymaps'
 local hooks = function(ev)
@@ -61,9 +62,8 @@ vim.pack.add {
   { src = 'https://github.com/maxmx03/modeline.nvim' },
   { src = 'https://github.com/lewis6991/gitsigns.nvim' },
   { src = 'https://github.com/saghen/blink.cmp', name = 'blink' },
-  -- {
-  --   src = 'https://github.com/maxmx03/supreme-octo-train',
-  -- },
+  { src = 'https://github.com/akinsho/bufferline.nvim' },
+  { src = 'https://github.com/OXY2DEV/markview.nvim' },
   -- dependencies
   'https://github.com/nvim-lua/plenary.nvim',
   'https://github.com/MunifTanjim/nui.nvim',
@@ -71,7 +71,6 @@ vim.pack.add {
   'https://github.com/nvim-tree/nvim-web-devicons',
   'https://github.com/maxmx03/base46',
 }
-
 require 'plugins.lspconfig'
 require 'plugins.comment'
 require 'plugins.autopairs'
@@ -83,14 +82,6 @@ require 'plugins.neo-tree'
 require 'plugins.conform'
 require 'plugins.flash'
 require 'plugins.gitsigns'
-local color = require 'base46.color'
-local shade = color.shade
-require('base46').setup {
-  colorscheme = 'onedark',
-  transparency = true,
-  themes = { 'onedark', 'darkplus' },
-  groups = {
-    { name = 'StatusLineNC', val = { fg = shade('#a0a8b7', 3), bg = shade('#1f2329', 3) } },
-    { name = '@lsp.type.modifier.java', val = { link = 'Keyword' } },
-  },
-}
+require 'plugins.bufferline'
+require 'plugins.markview'
+require 'plugins.base46'

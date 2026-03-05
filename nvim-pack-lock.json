@@ -16,6 +16,10 @@
       "rev": "02d5d15a0cd3a653e46fc7a792b526cdc15adf5f",
       "src": "https://github.com/saghen/blink.cmp"
     },
+    "bufferline.nvim": {
+      "rev": "655133c3b4c3e5e05ec549b9f8cc2894ac6f51b3",
+      "src": "https://github.com/akinsho/bufferline.nvim"
+    },
     "conform.nvim": {
       "rev": "40dcec5555f960b0a04340d76eabdf4efe78599d",
       "src": "https://github.com/stevearc/conform.nvim"
@@ -35,6 +39,10 @@
     "hydra.nvim": {
       "rev": "8c4a9f621ec7cdc30411a1f3b6d5eebb12b469dc",
       "src": "https://github.com/nvimtools/hydra.nvim"
+    },
+    "markview.nvim": {
+      "rev": "02824a95a0db2c9fd1bab3adba4510bc8f9c91e4",
+      "src": "https://github.com/OXY2DEV/markview.nvim"
     },
     "mason-lspconfig.nvim": {
       "rev": "a324581a3c83fdacdb9804b79de1cbe00ce18550",
@@ -70,7 +78,7 @@
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-treesitter": {
-      "rev": "cb2cb74f3c3cbbcc17e79cada2060165d616d849",
+      "rev": "544320a9cf5d6bf539ec1cc54d393064015670c4",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "nvim-ts-autotag": {

@@ -16,19 +16,7 @@ vim.keymap.set('n', '<C-Up>', '<C-w>k')
 vim.keymap.set('n', '<C-Left>', '<C-w>h')
 vim.keymap.set('n', '<C-Down>', '<C-w>j')
 vim.keymap.set('n', '<leader>p', vim.pack.update, opts)
-vim.keymap.set('n', '<leader>pd', function()
-  local unix = require 'lib.unix'
-  local plugins, err = unix.ls('/site/pack/core/opt', 'data')
-  if err ~= nil then
-    vim.notify(err, vim.log.levels.ERROR)
-    return
-  end
-  local remove = {}
-  vim.ui.select(plugins, { prompt = 'select plugin to delete' }, function(plugin)
-    table.insert(remove, plugin)
-  end)
-  vim.pack.del(remove)
-end, opts)
+vim.keymap.set('n', '<leader>pd', vim.pack.plugins, opts)
 vim.keymap.set('n', '<F1>', '<cmd>restart<CR>', opts)
 vim.keymap.set({ 't' }, '<Esc>', function()
   require('floaterm.api').switch_wins()
@@ -45,3 +33,7 @@ vim.api.nvim_create_user_command('LspLog', function()
     vim.cmd.edit(log_path)
   end
 end, { desc = 'Abre o arquivo de log do LSP' })
+vim.keymap.set('n', '<M-Up>', '<cmd>BufferLinePick<CR>', opts)
+vim.keymap.set('n', '<M-Right>', '<cmd>BufferLineCycleNext<CR>', opts)
+vim.keymap.set('n', '<M-Left>', '<cmd>BufferLineCyclePrev<CR>', opts)
+vim.keymap.set('n', '<M-Down>', '<cmd>bdelete<CR>', opts)
