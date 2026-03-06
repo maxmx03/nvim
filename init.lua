@@ -26,6 +26,7 @@ local builtin_plugs = {
   'compiler',
   'bugreport',
   'ftplugin',
+  'man',
 }
 for _, plugin in ipairs(builtin_plugs) do
   vim.g['loaded_' .. plugin] = true
@@ -61,9 +62,8 @@ vim.pack.add {
   { src = 'https://github.com/b0o/SchemaStore.nvim' },
   { src = 'https://github.com/maxmx03/modeline.nvim' },
   { src = 'https://github.com/lewis6991/gitsigns.nvim' },
-  { src = 'https://github.com/saghen/blink.cmp', name = 'blink' },
-  { src = 'https://github.com/akinsho/bufferline.nvim' },
-  { src = 'https://github.com/OXY2DEV/markview.nvim' },
+  { src = 'https://github.com/saghen/blink.cmp', name = 'blink', version = 'v1.9.1' },
+  { src = 'https://github.com/supermaven-inc/supermaven-nvim' },
   -- dependencies
   'https://github.com/nvim-lua/plenary.nvim',
   'https://github.com/MunifTanjim/nui.nvim',
@@ -82,6 +82,5 @@ require 'plugins.neo-tree'
 require 'plugins.conform'
 require 'plugins.flash'
 require 'plugins.gitsigns'
-require 'plugins.bufferline'
-require 'plugins.markview'
+require 'plugins.supermaven'
 require 'plugins.base46'

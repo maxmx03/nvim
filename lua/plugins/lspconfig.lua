@@ -33,6 +33,7 @@ local servers_default = {
   'vimls',
   'vue_ls',
   'html',
+  'gradle_ls',
 }
 for _, server in ipairs(servers_default) do
   vim.lsp.config(server, {
