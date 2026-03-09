@@ -34,6 +34,7 @@ local servers_default = {
   'vue_ls',
   'html',
   'gradle_ls',
+  'lemminx',
 }
 for _, server in ipairs(servers_default) do
   vim.lsp.config(server, {
@@ -89,8 +90,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.api.nvim_create_autocmd('BufWritePre', {
       pattern = '*.go',
       callback = function(ev)
-        local count = vim.diagnostic.count(ev.buf)
-        if count[1] ~= nil then
+        local errors = vim.diagnostic.count(ev.buf)
+        if not vim.tbl_isempty(errors) then
           vim.lsp.buf.code_action {
             context = {
               only = { 'source.organizeImports', 'source.fixAll' },
