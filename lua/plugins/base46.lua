@@ -22,6 +22,5 @@ require('base46').setup {
     rainbow = false,
     flutterTools = false,
     supermaven = false,
-    markview = false,
   },
 }

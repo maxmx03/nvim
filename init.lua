@@ -64,6 +64,8 @@ vim.pack.add {
   { src = 'https://github.com/lewis6991/gitsigns.nvim' },
   { src = 'https://github.com/saghen/blink.cmp', name = 'blink', version = 'v1.9.1' },
   { src = 'https://github.com/supermaven-inc/supermaven-nvim' },
+  { src = 'https://github.com/folke/todo-comments.nvim' },
+  { src = 'https://github.com/OXY2DEV/markview.nvim' },
   -- dependencies
   'https://github.com/nvim-lua/plenary.nvim',
   'https://github.com/MunifTanjim/nui.nvim',
@@ -83,4 +85,6 @@ require 'plugins.conform'
 require 'plugins.flash'
 require 'plugins.gitsigns'
 require 'plugins.supermaven'
+require 'plugins.todo-comments'
+require 'plugins.markview'
 require 'plugins.base46'

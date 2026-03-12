@@ -1,6 +1,6 @@
 ---@class base46
-local onedarker = {
-  name = 'onedarker',
+local onedark = {
+  name = 'onedark',
   none = 'NONE',
   yellow = '#e2b86b',
   cyan = '#48b0bd',
@@ -24,10 +24,10 @@ local onedarker = {
     base09 = '#48b0bd', -- Diagnostic Info (cyan)
     base0A = '#e2b86b', -- Diagnostic Warning (yellow)
     base0B = '#e55561', -- Diagnostics Error (red)
-    base0C = '#4fa6ed', -- Markup Bold (blue)
-    base0D = '#4fa6ed', -- Markup Italic
-    base0E = '#4fa6ed', -- Markup url
-    base0F = '#4fa6ed', -- Markup Inline Code
+    base0C = '#cc9057', -- Markup Bold (blue)
+    base0D = '#e2b86b', -- Markup Italic
+    base0E = '#bf68d9', -- Markup url
+    base0F = '#8ebd6b', -- Markup Inline Code
     base0G = '#4fa6ed', -- Markup Heading 1
     base0H = '#e55561', -- Markup Heading 2
     base0I = '#8ebd6b', -- Markup Heading 3
@@ -71,4 +71,4 @@ local onedarker = {
 }
 
 local base46 = require 'base46'
-base46.load_theme(onedarker)
+base46.load_theme(onedark)

@@ -27,6 +27,7 @@ local languages = {
   'latex',
   'comment',
   'typst',
+  'meson',
 }
 require('nvim-treesitter').install(languages)
 table.insert(languages, 'typescriptreact')
