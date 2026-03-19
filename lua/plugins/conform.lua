@@ -15,6 +15,7 @@ conform.setup {
     scss = prettier,
     html = prettier,
     yaml = prettier,
+    sh = { 'shfmt' },
   },
   c = { lsp_format = 'prefer' },
   cpp = { lsp_format = 'prefer' },
@@ -37,5 +38,6 @@ require('mason-tool-installer').setup {
     'stylua',
     'prettier',
     'prettierd',
+    'shfmt',
   },
 }

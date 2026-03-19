@@ -8,16 +8,17 @@ vim.keymap.set('n', 'ss', '<cmd>vsplit<CR>', opts)
 vim.keymap.set('n', 'sv', '<cmd>split<CR>', opts)
 vim.keymap.set('n', '<leader>x', '<cmd>FloatermToggle<CR>', opts)
 vim.keymap.set('t', '<leader>x', '<cmd>FloatermToggle<CR>', opts)
-vim.keymap.set('n', '<F2>', function()
-  local content = vim.fn.readfile('meson.build')[2]
-  local executable = content:match 'executable%s*%(%s*[\'"](.-)[\'"]'
-  if not executable then
-    vim.notify('No executable found in meson.build', vim.log.levels.ERROR)
-    return
+vim.keymap.set('n', '<F3>', function()
+  local contents = vim.fn.readfile 'meson.build'
+  for _, content in ipairs(contents) do
+    local executable = content:match 'executable%s*%(%s*[\'"](.-)[\'"]'
+    if executable ~= nil then
+      require('floaterm.api').send_cmd {
+        cmd = 'meson compile -j4 -C builddir/ && ' .. string.format('./builddir/%s', executable),
+      }
+      return
+    end
   end
-  require('floaterm.api').send_cmd {
-    cmd = 'meson compile -C builddir/ && ' .. string.format('./builddir/%s', executable),
-  }
 end, opts)
 vim.keymap.set('n', '<leader>e', '<cmd>Neotree toggle reveal position=float<CR>')
 vim.keymap.set('n', '<leader>r', '<cmd>Neotree buffers position=float<CR>')

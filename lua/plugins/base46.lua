@@ -1,16 +1,14 @@
 local color = require 'base46.color'
 local blend = color.blend
 local shade = color.shade
-local background = '#0e1013'
-local purple = '#bf68d9'
 require('base46').setup {
-  colorscheme = 'onedark',
-  transparency = true,
-  themes = { 'onedark', 'darkplus' },
+  colorscheme = 'carbonfox',
+  transparency = false,
+  themes = { 'carbonfox' },
   groups = {
-    { name = 'StatusLineNC', val = { fg = shade('#a0a8b7', 3), bg = shade('#1f2329', 3) } },
+    { name = 'StatusLineNC', val = { fg = shade('#dde1e6', 3), bg = shade('#202020', 3) } },
     { name = '@lsp.type.modifier.java', val = { link = 'Keyword' } },
-    { name = 'NeoTreeTitleBar', val = { bg = blend(purple, background, 0.3), fg = purple } },
+    { name = 'NeoTreeTitleBar', val = { bg = blend('#3ddbd9', '#0f0f0f', 0.3), fg = '#3ddbd9' } },
   },
   plugins = {
     nvimtree = false,
