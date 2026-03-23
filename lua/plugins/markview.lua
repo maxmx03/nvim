@@ -5,4 +5,7 @@ require('markview').setup {
   markdown_inline = {
     enable = true,
   },
+  latex = {
+    enable = true,
+  },
 }
