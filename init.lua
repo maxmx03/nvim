@@ -63,6 +63,7 @@ vim.pack.add {
   { src = 'https://github.com/maxmx03/modeline.nvim' },
   { src = 'https://github.com/lewis6991/gitsigns.nvim' },
   { src = 'https://github.com/saghen/blink.cmp', name = 'blink', version = 'v1.9.1' },
+  { src = 'https://github.com/rafamadriz/friendly-snippets' },
   { src = 'https://github.com/folke/todo-comments.nvim' },
   { src = 'https://github.com/OXY2DEV/markview.nvim' },
   -- dependencies

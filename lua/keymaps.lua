@@ -14,7 +14,7 @@ vim.keymap.set('n', '<F3>', function()
     local executable = content:match 'executable%s*%(%s*[\'"](.-)[\'"]'
     if executable ~= nil then
       require('floaterm.api').send_cmd {
-        cmd = 'meson compile -j4 -C builddir/ && ' .. string.format('./builddir/%s', executable),
+        cmd = 'meson compile -j4 -C build/ && ' .. string.format('./build/%s', executable),
       }
       return
     end
