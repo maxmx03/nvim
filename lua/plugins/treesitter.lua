@@ -40,5 +40,11 @@ vim.api.nvim_create_autocmd('FileType', {
   pattern = languages,
   callback = function()
     vim.treesitter.start()
+    if vim.bo.filetype == 'markdown' then
+      vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+      vim.wo.foldmethod = 'expr'
+    else
+      vim.wo.foldmethod = 'manual'
+    end
   end,
 })
