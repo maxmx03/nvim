@@ -66,6 +66,7 @@ vim.pack.add {
   { src = 'https://github.com/rafamadriz/friendly-snippets' },
   { src = 'https://github.com/folke/todo-comments.nvim' },
   { src = 'https://github.com/OXY2DEV/markview.nvim' },
+  { src = 'https://github.com/OXY2DEV/foldtext.nvim' },
   -- dependencies
   'https://github.com/nvim-lua/plenary.nvim',
   'https://github.com/MunifTanjim/nui.nvim',
@@ -86,4 +87,5 @@ require 'plugins.flash'
 require 'plugins.gitsigns'
 require 'plugins.todo-comments'
 require 'plugins.markview'
+require 'plugins.fold-text'
 require 'plugins.base46'

@@ -29,6 +29,10 @@
       "rev": "fc2efaf25eeefcb33177d5807c0c745e125cf293",
       "src": "https://github.com/nvzone/floaterm"
     },
+    "foldtext.nvim": {
+      "rev": "97c3fbdfca2ee37d4a8254e1d088c7f6b9d13578",
+      "src": "https://github.com/OXY2DEV/foldtext.nvim"
+    },
     "friendly-snippets": {
       "rev": "6cd7280adead7f586db6fccbd15d2cac7e2188b9",
       "src": "https://github.com/rafamadriz/friendly-snippets"
