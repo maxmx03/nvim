@@ -74,6 +74,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
       })
     end
 
+    vim.api.nvim_create_autocmd('InsertLeave', {
+      buffer = args.buf,
+      command = 'update',
+    })
+
     if
       not client:supports_method 'textDocument/willSaveWaitUntil'
       and client:supports_method 'textDocument/formatting'
