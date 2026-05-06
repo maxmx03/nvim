@@ -30,6 +30,9 @@ local languages = {
   'meson',
   'query',
   'yaml',
+  'godot_resource',
+  'gdshader',
+  'gdscript',
 }
 require('nvim-treesitter').install(languages)
 table.insert(languages, 'typescriptreact')

@@ -47,6 +47,10 @@ require('mason-lspconfig').setup {
   automatic_enable = servers,
   ensure_installed = servers,
 }
+vim.lsp.config('gdscript', {
+  capabilities = capabilities,
+})
+vim.lsp.enable 'gdscript'
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('my.lsp', {}),
   callback = function(args)
