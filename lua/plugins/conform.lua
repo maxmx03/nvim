@@ -16,6 +16,7 @@ conform.setup {
     html = prettier,
     yaml = prettier,
     sh = { 'shfmt' },
+    gdscript = { 'gdscript-formatter' },
   },
   c = { lsp_format = 'prefer' },
   cpp = { lsp_format = 'prefer' },
@@ -39,5 +40,6 @@ require('mason-tool-installer').setup {
     'prettier',
     'prettierd',
     'shfmt',
+    'gdscript-formatter',
   },
 }
