@@ -26,7 +26,6 @@ local builtin_plugs = {
   'compiler',
   'bugreport',
   'ftplugin',
-  'man',
 }
 for _, plugin in ipairs(builtin_plugs) do
   vim.g['loaded_' .. plugin] = true
