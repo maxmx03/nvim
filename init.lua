@@ -37,7 +37,7 @@ require 'keymaps'
 local hooks = function(ev)
   local name, kind = ev.data.spec.name, ev.data.kind
   if name == 'blink' and kind == 'install' then
-    vim.fn.jobstart({ 'cargo', 'build', '--release' }, { cwd = ev.data.path })
+    require('blink.cmp').build():wait(60000)
   end
 end
 vim.api.nvim_create_autocmd('PackChanged', { callback = hooks })
