@@ -1,5 +1,10 @@
+-- add yours here!
+
+-- local o = vim.o
+-- o.cursorlineopt ='both' -- to enable cursorline!
 local o = vim.opt
 local fn = vim.fn
+vim.g.mapleader = ';'
 
 o.autowrite = true
 o.autowriteall = true

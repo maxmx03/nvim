@@ -34,10 +34,7 @@ end
 ---@return string
 function M.pwd()
   local dir, err, err_name = vim.uv.cwd()
-  if err ~= nil or dir == nil or string.len(dir) == 0 then
-    if err_name then
-      return ''
-    end
+  if err ~= nil or dir == nil or string.len(dir) == 0 or err_name then
     return ''
   end
   return dir

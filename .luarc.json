@@ -1,12 +1,9 @@
 {
   "workspace.library": [
     "/usr/share/nvim/runtime",
-    "~/.local/share/nvim/lazy/mason.nvim",
-    "~/.local/share/nvim/lazy/neo-tree.nvim",
-    "~/.local/share/nvim/lazy/indent-blankline.nvim",
-    "~/.local/share/nvim/lazy/rainbow-delimiters.nvim",
-    "~/.local/share/nvim/lazy/markview.nvim",
-    "~/.local/share/nvim/lazy/auto-session",
+    "~/.local/share/nvim/lazy/blink.cmp/",
+    "~/.local/share/nvim/lazy/markview.nvim/",
+    "~/.local/share/nvim/lazy/flash.nvim/",
     "${3rd}/luv/library",
     "${3rd}/busted/library",
     "${3rd}/luassert/library"

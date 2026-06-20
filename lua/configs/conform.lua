@@ -33,13 +33,3 @@ conform.setup {
 vim.api.nvim_create_user_command('Format', function()
   conform.format {}
 end, {})
-
-require('mason-tool-installer').setup {
-  ensure_installed = {
-    'stylua',
-    'prettier',
-    'prettierd',
-    'shfmt',
-    'gdscript-formatter',
-  },
-}

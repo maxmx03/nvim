@@ -41,7 +41,7 @@ local hint = [[
 ]]
 
 Hydra {
-  name = 'Options',
+  name = 'Fold Methods',
   hint = hint,
   config = {
     color = 'amaranth',
