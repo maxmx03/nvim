@@ -116,31 +116,6 @@ return {
     end,
   },
   {
-    'OXY2DEV/helpview.nvim',
-    lazy = false,
-    ft = 'help',
-  },
-  {
-    'OXY2DEV/foldtext.nvim',
-    lazy = false,
-    opts = {},
-  },
-  {
-    'OXY2DEV/markview.nvim',
-    priority = 49,
-    ft = { 'markdown', 'mdx', 'markdown.mdx' },
-    ---@type markview.config
-    opts = {
-      latex = {
-        enable = true,
-      },
-    },
-    dependencies = {
-      'nvim-tree/nvim-web-devicons',
-    },
-  },
-
-  {
     'lewis6991/gitsigns.nvim',
     opts = {
       current_line_blame = true,
