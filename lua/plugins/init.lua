@@ -57,10 +57,13 @@ return {
     end,
   },
   {
-    'nvimdev/modeline.nvim',
-    config = function()
-      require('modeline').setup()
-    end,
+    'nvim-lualine/lualine.nvim',
+    opts = {
+      options = {
+        theme = 'kanagawa',
+      },
+    },
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
   },
   {
     'nvim-telescope/telescope.nvim',
@@ -196,12 +199,6 @@ return {
         desc = 'Toggle Flash Search',
       },
     },
-  },
-  {
-    'nvimtools/hydra.nvim',
-    config = function()
-      require 'configs.hydra'
-    end,
   },
   {
     'nvzone/floaterm',

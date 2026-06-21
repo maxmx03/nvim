@@ -35,6 +35,7 @@ local servers_default = {
   'html',
   'gradle_ls',
   'lemminx',
+  'pyright',
 }
 for _, server in ipairs(servers_default) do
   vim.lsp.config(server, {

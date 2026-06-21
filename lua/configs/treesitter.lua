@@ -33,6 +33,7 @@ local languages = {
   'godot_resource',
   'gdshader',
   'gdscript',
+  'python',
 }
 require('nvim-treesitter').install(languages)
 table.insert(languages, 'typescriptreact')
@@ -43,11 +44,5 @@ vim.api.nvim_create_autocmd('FileType', {
   pattern = languages,
   callback = function()
     vim.treesitter.start()
-    if vim.bo.filetype == 'markdown' then
-      vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-      vim.wo.foldmethod = 'expr'
-    else
-      vim.wo.foldmethod = 'manual'
-    end
   end,
 })
