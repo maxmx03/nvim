@@ -34,8 +34,8 @@ require('dashboard').setup {
       {
         icon = ' ',
         desc = 'Find Files',
-        key = 't',
-        keymap = vim.g.mapleader .. ' t t',
+        key = 'f',
+        keymap = vim.g.mapleader .. ' f',
         action = 'Telescope find_files',
       },
       {

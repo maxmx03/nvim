@@ -23,7 +23,7 @@ wk.add {
   },
   {
     '<leader>f',
-    '<cmd>Format<cr>',
+    '<cmd>Telescope find_files<cr>',
     desc = 'Format file',
   },
   {
