@@ -40,6 +40,7 @@ table.insert(languages, 'typescriptreact')
 table.insert(languages, 'jsonc')
 table.insert(languages, 'sh')
 table.insert(languages, 'tex')
+table.insert(languages, 'lisp')
 vim.api.nvim_create_autocmd('FileType', {
   pattern = languages,
   callback = function()
