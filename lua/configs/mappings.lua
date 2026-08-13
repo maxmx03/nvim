@@ -33,18 +33,22 @@ wk.add {
   {
     '<leader>li',
     vim.lsp.buf.implementation,
+    desc = 'Implementation',
   },
   {
     '<leader>ld',
     vim.lsp.buf.defition,
+    desc = 'Defition',
   },
   {
     '<leader>lh',
     vim.lsp.buf.hover,
+    desc = 'Hover',
   },
   {
     '<leader>la',
     vim.lsp.buf.code_action,
+    desc = 'Code Action',
   },
   {
     '<leader>d',
@@ -53,10 +57,12 @@ wk.add {
   {
     '<leader>do',
     vim.diagnostic.open_float,
+    desc = 'Open float',
   },
   {
     '<leader>dl',
     vim.diagnostic.setloclist,
+    desc = 'Set loclist',
   },
   {
     '<leader>t',
